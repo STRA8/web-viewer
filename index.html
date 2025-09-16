@@ -21,13 +21,13 @@
   <iframe id="viewer" src=""></iframe>
 
   <script>
-    // remove the leading slash and get the path
-    const path = window.location.pathname.replace(/^\/web-viewer\//, "");
-    if (path) {
-      const url = decodeURIComponent(path);
+    const params = new URLSearchParams(window.location.search);
+    const url = params.get("url");
+
+    if (url) {
       document.getElementById("viewer").src = "https://" + url;
     } else {
-      document.body.innerHTML = "<h2>No URL provided</h2>";
+      document.body.innerHTML = "<h2>Usage: ?url=example.com</h2>";
     }
   </script>
 </body>
