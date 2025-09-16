@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Viewer</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="viewer" src=""></iframe>
+
+  <script>
+    // remove the leading slash and get the path
+    const path = window.location.pathname.replace(/^\/web-viewer\//, "");
+    if (path) {
+      const url = decodeURIComponent(path);
+      document.getElementById("viewer").src = "https://" + url;
+    } else {
+      document.body.innerHTML = "<h2>No URL provided</h2>";
+    }
+  </script>
+</body>
+</html>
